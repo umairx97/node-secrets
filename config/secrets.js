@@ -4,9 +4,10 @@ const secrets = [
   'appUsername',
   'appPassword'
 ]
-const base = Object.keys(process.env).reduce((acc, key) => {
+
+const base = Object.entries(process.env).reduce((acc, [key, value]) => {
   const camelized = camelize(key)
-  if (secrets.includes(camelized)) acc[camelized] = process.env[key]
+  if (secrets.includes(camelized)) acc[camelized] = value
 
   return acc
 }, {})
