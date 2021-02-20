@@ -7,9 +7,9 @@ const secrets = [
 
 const base = Object.entries(process.env).reduce((acc, [key, value]) => {
   const camelized = camelize(key)
-  if (secrets.includes(camelized)) acc[camelized] = value
+  if (secrets.includes(camelized) && value) acc[camelized] = value
 
   return acc
-}, {})
+}, { appUsername: 'umairx97' })
 
 console.log(JSON.stringify(Object.assign({}, base)))
